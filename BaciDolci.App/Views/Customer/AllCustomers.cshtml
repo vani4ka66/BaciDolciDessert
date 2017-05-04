@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BaciDolci.Models.EntityModels.Customer>
+@{
+    ViewBag.Title = "AllCustomers";
+    int counter = 1;
+}
+
+<div class="container">
+    <h2>All Customers</h2>
+    <br/>
+    <br />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>@Html.DisplayNameFor(m=> m.FullName)</th>
+                <th>@Html.DisplayNameFor(m=>m.Email )</th>
+                <th>@Html.DisplayNameFor(m=> m.UserName)</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+        
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@counter</td>
+                <td>@Html.DisplayFor(modelItem=> m.FullName)</td>
+                <td>@m.User.Email</td>
+                <td>@m.User.UserName</td>
+
+            </tr>
+
+            counter++;
+        }
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+

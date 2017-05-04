@@ -1,0 +1,125 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IEnumerable<BaciDolci.Models.ViewModels.Home.NewsItemViewModel>
+
+@{
+    ViewBag.Title = "News";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <img src="../../Content/images/n1.png" alt="cakes" width="1290" height="350"/>
+        </div>
+    </div>
+</div>
+
+<div style="text-align: center">
+    <h2 style="font-style: italic">--- NEWS ---</h2>
+</div>
+
+@Html.Partial("_AddNewsButton")
+
+<div class="container">
+    @{
+        int counter = 0;
+    }
+
+    @foreach (var m in Model)
+    {
+        if (counter%2 == 0)
+        {
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="/Home/News/">
+                        <img src="@m.Image" alt="news" width="500" height="300"/>
+                    </a>
+                </div>
+                <div class="col-lg-6" style="text-align: center">
+                    <h3>
+                        <strong>@Html.DisplayFor(modelItem => m.Name)</strong>
+                    </h3>
+                    <br/>
+                    @Html.DisplayFor(modelItem => m.Content)
+                    <br/>
+                    @Html.DisplayFor(modelItem => m.PublishDate)
+                </div>
+
+            </div>
+
+            if (this.User.IsInRole("Admin"))
+            {
+                <div style="text-align: center">
+                    <a href="/Admin/Admin/EditNews/@m.Id">
+                        <input type="submit" id="btn-edit-news" class="btn btn-info btn-lg" value="Edit News"/>
+                    </a>
+                    <a href="/Admin/Admin/DeleteNews/@m.Id">
+                        <input type="submit" id="btn-delete-news" class="btn btn-danger btn-lg" value="Delete News"/>
+                    </a>
+                </div>
+            }
+            <div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </div>
+
+            counter++;
+        }
+        else if (counter%2 != 0)
+        {
+            <div class="row">
+                <div class="col-lg-6" style="text-align: center">
+                    <h3>
+                        <strong>@Html.DisplayFor(modelItem => m.Name)</strong>
+                    </h3>
+                    <br/>
+                    @Html.DisplayFor(modelItem => m.Content)
+                    <br/>
+                    @Html.DisplayFor(modelItem => m.PublishDate)
+                </div>
+                <div class="col-lg-6">
+                    <a href="/Home/News/">
+                        <img src="@m.Image" alt="news" width="500" height="300"/>
+                    </a>
+                </div>
+
+            </div>
+            if (this.User.IsInRole("Admin"))
+            {
+                <div style="text-align: center">
+                    <a href="/Admin/Admin/EditNews/@m.Id">
+                        <input type="submit" id="btn-edit-news" class="btn btn-info btn-lg" value="Edit News"/>
+                    </a>
+                    <a href="/Admin/Admin/DeleteNews/@m.Id">
+                        <input type="submit" id="btn-delete-news" class="btn btn-danger btn-lg" value="Delete News"/>
+                    </a>
+                </div>
+            }
+            <div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </div>
+
+            counter++;
+        }
+
+    }
+
+</div>
+
+@Html.Partial("_Pagination")
+
+
+
+@*@Html.PagedListPager(Model, page => Url.Action("News", new { page }))*@
+
+@*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("News", new { page }))*@
+
+
+

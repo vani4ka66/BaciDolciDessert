@@ -1,0 +1,54 @@
+﻿@model BaciDolci.Models.BindingModels.DeleteNewsBindingModel
+
+@{
+    ViewBag.Title = "DeleteNews";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h2>Delete News</h2>
+        <hr/>
+
+        @using (Html.BeginForm("DeleteNews", "Admin", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+            @Html.HiddenFor(m => m.Id)
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        @Html.EditorFor(m => m.Name, new {htmlAttributes = new {@class = "form-control", required = "true", PlaceHolder = @Model.Name}})
+                        @Html.ValidationMessageFor(m => m.Name, "", new {@class = "text-danger"})
+                    </div>
+                    <br/>
+
+                </div>
+            </div>
+
+            <div class="btn-group btn btn-succes" role="group" aria-label="...">
+                <input type="submit" id="btn-delete-news" class="btn btn-danger btn-lg" value="Delete"/>
+            </div>
+        }
+    </div>
+</div>
+
+@*<form method="post" id="delete-news">
+        <input type="hidden" name="id" hidden="hidden" value="@Model.Id" />
+
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="text" name="Name" class="form-control" id="name" placeholder="@Model.Name">
+                </div>
+                <br />
+            </div>
+        </div>
+
+        <div class="btn-group btn btn-succes" role="group" aria-label="...">
+            <input type="submit" id="btn-delete-news" class="btn btn-danger btn-lg" value="Delete" />
+        </div>
+    </form>*@
+
+

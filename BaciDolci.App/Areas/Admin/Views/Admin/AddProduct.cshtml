@@ -1,0 +1,70 @@
+﻿@model BaciDolci.Models.BindingModels.ProductBindingModel
+   
+@{
+    ViewBag.Title = "AddProduct";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h2>Add Product</h2>
+        <hr />
+
+        @using (Html.BeginForm("AddProduct", "Admin", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        @Html.EditorFor(m => m.Name, new {htmlAttributes = new {@class = "form-control", required = "true", PlaceHolder = "Enter product name"}})
+                        @Html.ValidationMessageFor(m => m.Name, "", new {@class = "text-danger"})
+                    </div>
+                    <br />
+
+                </div>
+            </div>
+
+            <div><br /></div>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        @Html.EditorFor(m => m.Image, new {htmlAttributes = new {@class = "form-control", type = "text", required = "false", PlaceHolder = "Enter product image"}})
+                        @Html.ValidationMessageFor(m => m.Image, "", new {@class = "text-danger"})
+                    </div>
+                    <br/>
+                </div>
+            </div>
+
+            <div><br /></div>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        @Html.EditorFor(m => m.Price, new {htmlAttributes = new {@class = "form-control", required = "false", PlaceHolder = "Enter product price"}})
+                        @Html.ValidationMessageFor(m => m.Price, "", new {@class = "text-danger"})
+                    </div>
+                    <br/>
+                </div>
+            </div>
+
+            <div><br /></div>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        @Html.DropDownListFor(x => x.CategoryId, new List<SelectListItem>(ViewBag.CategoriesNames), "--- Select Category--- ", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.CategoryId, "", new {@class = "text-danger"})
+                    </div>
+                    <br />
+                </div>
+            </div>
+
+            <div class="btn-group btn btn-succes" role="group" aria-label="...">
+                <input type="submit" id="btn-add-category" class="btn btn-success btn-lg" value="Save" />
+            </div>
+        }
+    </div>
+</div>
+
+

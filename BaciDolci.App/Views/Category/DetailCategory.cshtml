@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BaciDolci.Models.ViewModels.Product.ProductViewModel>
+
+@{
+    ViewBag.Title = "DetailCategory";
+}
+
+@Html.Partial("_AddProductButton")
+
+<div class="container">
+    
+    @foreach (var m in Model)
+    {
+        if (this.User.IsInRole("Admin"))
+        {
+            @Html.Partial("_CategoryDetail", m)
+        }
+        else
+        {
+            @Html.Partial("_CategoryDetailReadOnly", m)
+        }
+    }
+</div>
+<br/>
+
+<div class="row">
+    <div style="text-align: center">
+        @Html.ActionLink("Back to categories", "AllCategories", null, new {@class = "btn btn-danger btn-lg"})
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

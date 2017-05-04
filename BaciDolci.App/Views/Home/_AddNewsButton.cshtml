@@ -1,0 +1,6 @@
+﻿@if (this.User.IsInRole("Admin"))
+{
+    <a href="/Admin/Admin/AddNews">
+        <input type="submit" id="btn-add-news" class="btn btn-success btn-lg" value="Add News" />
+    </a>
+}

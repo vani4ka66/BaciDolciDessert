@@ -1,0 +1,95 @@
+﻿@model BaciDolci.Models.ViewModels.Home.NewsItemViewModel
+
+@{
+    ViewBag.Title = "AddNews";
+}
+
+
+<div class="container">
+    <div class="jumbotron">
+
+        <h1>Add News</h1>
+        <hr/>
+
+        @using (Html.BeginForm("AddNews", "Admin", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        @Html.EditorFor(m => m.Name, new {htmlAttributes = new {@class = "form-control", required = "true", PlaceHolder = "Enter news name"}})
+                        @Html.ValidationMessageFor(m => m.Name, "", new {@class = "text-danger"})
+                    </div>
+                    <br />
+                </div>
+            </div>
+
+            <div><br /></div>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        @Html.EditorFor(m => m.Image, new {htmlAttributes = new {@class = "form-control", type = "text", required = "false", PlaceHolder = "Enter news image"}})
+                        @Html.ValidationMessageFor(m => m.Image, "", new {@class = "text-danger"})
+                    </div>
+                    <br/>
+                </div>
+            </div>
+
+            <div><br /></div>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        @Html.TextAreaFor(m => m.Content, new { @class = "form-control", minlength = 20, required = "true", PlaceHolder = "Enter news content" })
+                        @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger" })
+                    </div>
+                    <br/>
+                </div>
+            </div>
+
+           @* <div class="row">
+        <div class="form-group">
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.PublishDate, "{0:dd.MM.yyy HH:mm}",  new { @class = "form-control", type = "date", required = "true", PlaceHolder = "dd/MM/yyyy" })
+                @Html.ValidationMessageFor(m => m.PublishDate, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>
+    </div>*@
+
+            <div class="btn-group btn btn-succes" role="group" aria-label="...">
+                <input type="submit" id="btn-add-category" class="btn btn-success btn-lg" value="Save"/>
+            </div>
+        }
+    </div>
+</div>
+
+
+    @*<form method="post" id="new-news-form">
+
+        <div class="form-group row">
+            <input type="text" name="Name" id="name" required="required" class="form-control"
+                   placeholder="Enter Name of News"/>
+        </div>
+
+        <div class="form-group row">
+            <textarea name="Content" id="content" class="form-control"
+                      placeholder="Enter News Content" minlength="20"></textarea>
+        </div>
+
+        <div class="form-group row">
+            <input type="text" name="Image" id="image" required="required" class="form-control"
+                   placeholder="Enter URL to Image"/>
+        </div>
+
+
+        <div class="form-group row">
+            <input type="date" name="PublishDate" id="puplishdate" class="form-control" placeholder="dd/MM/yyyy"/>
+        </div>
+
+        <input type="submit" id="btn-add-news" class="btn btn-success btn-lg"
+               value="Add News"/>
+    </form>*@
+

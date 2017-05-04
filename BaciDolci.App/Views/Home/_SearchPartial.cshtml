@@ -1,0 +1,34 @@
+﻿@model IEnumerable<BaciDolci.Models.EntityModels.Product>
+
+@{
+    int counter = 1;
+}
+
+<table class="table table-striped">
+    <tr>
+        <th>Number</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Link</th>
+
+    </tr>
+    
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td>@counter</td>
+            <td>@Html.DisplayFor(modelItem => m.Name)</td>
+            <td>$@Html.DisplayFor(modelItem => m.Price)</td>
+            <td>$@Html.DisplayFor(modelItem => m.Category.Name)</td>
+            <td>
+                 <a href="/Product/DetailProduct/@m.Id">
+                    @Html.DisplayFor(modelItem => m.Name)
+                </a>
+            </td>
+            
+        </tr>
+        counter++;
+    }
+</table>
+

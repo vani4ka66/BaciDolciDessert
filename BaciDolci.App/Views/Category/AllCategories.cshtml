@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BaciDolci.Models.ViewModels.Product.CategoryViewModel>
+
+@{
+    ViewBag.Title = "AllCategories";
+}
+
+<div class="container-fluid">
+    <img src="../../Content/images/10.png" alt="cakes" width="1290" height="350" />
+</div>
+
+
+<div style="font-style: italic">
+    <h2 style="text-align: center">--- Baci Dolci Desserts ---</h2>
+</div>
+<br />
+
+@Html.Partial("_AddCategoryButton")
+
+<div class="container">
+    @foreach (var m in Model)
+    {
+        if (this.User.IsInRole("Admin"))
+        {
+            @Html.Partial("_CategoriesAll", m)
+        }
+        else
+        {
+            @Html.Partial("_CategoriesAllreadOnly", m)
+        }
+    }
+</div>
+
+

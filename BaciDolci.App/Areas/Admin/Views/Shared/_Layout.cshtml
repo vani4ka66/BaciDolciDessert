@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Baci Dolci Ltd.</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/less")
+    @Styles.Render("~/Content/scss")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+<body>
+    <div class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <div class="col-lg-offset-3">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Carousel", "Home")</li>
+                        <li>@Html.ActionLink("Products", "AllCategories", "Category")</li>
+                        <li>@Html.ActionLink("        ", "", "")</li>
+                        <li class="logoFont">
+                            @Html.ActionLink("BACI DOLCI", "Carousel", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        </li>
+                        <li>@Html.ActionLink("     ", "", "")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("News", "News", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+
+        <footer></footer>
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

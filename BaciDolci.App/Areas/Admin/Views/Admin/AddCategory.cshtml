@@ -1,0 +1,44 @@
+﻿@using System.Web.UI.WebControls
+@model BaciDolci.Models.ViewModels.Product.CategoryViewModel
+
+@{
+    ViewBag.Title = "AddCategory";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h2>Add Category</h2>
+        <hr />
+
+        @using (Html.BeginForm("AddCategory", "Admin", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        @Html.EditorFor(m => m.Name, new {htmlAttributes = new {@class = "form-control", @required = "true", PlaceHolder = "Enter category name"}})
+                        @Html.ValidationMessageFor(m => m.Name, "", new {@class = "text-danger"})
+                    </div>
+                    <br/>
+
+                </div>
+            </div>
+            <div><br /></div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        @Html.EditorFor(m => m.Image, new { htmlAttributes = new { @class = "form-control", type = "text", @required = "false", PlaceHolder = "Enter category image" } })
+                        @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
+                    </div>
+                    <br />
+                </div>
+            </div>
+
+            <div class="btn-group btn btn-succes" role="group" aria-label="...">
+                <input type="submit" id="btn-add-category" class="btn btn-success btn-lg" value="Save" />
+            </div>
+        }
+    </div>
+</div>
+

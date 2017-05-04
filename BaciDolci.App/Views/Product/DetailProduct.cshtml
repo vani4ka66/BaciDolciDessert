@@ -1,0 +1,38 @@
+﻿@model BaciDolci.Models.ViewModels.Product.ProductViewModel
+
+@{
+    ViewBag.Title = "DetailProduct";
+}
+
+<div class="container">
+    <div style="text-align: center">
+        <figure class="product-category">
+            <a href="#">
+                <img src="@Html.DisplayFor(vms => vms.Image)" alt="cakes" width="500" height="300" />
+            </a>
+
+            <figcaption>
+                @Html.DisplayFor(modelItem => modelItem.Name)<br/>
+                $@Html.DisplayFor(modelItem => modelItem.Price)
+            </figcaption>
+        </figure>
+    </div>
+</div>
+
+@if (this.User.Identity.IsAuthenticated)
+{
+    <form action="/Product/Buy/@Model.Id" method="post">
+        <div style="text-align: center">
+            <input type="number" name="Id" value=@Html.DisplayFor(vms => vms.Id) hidden="hidden" />
+            <input type="submit" class="btn btn-success" value="Add to Cart" />
+        </div>
+    </form>
+}
+
+<br />
+<div class="row">
+    <div style="text-align: center">
+        <a class="btn btn-danger" href="/Category/DetailCategory/@Model.CategoryId">Back</a>
+    </div>
+</div>
+<br />

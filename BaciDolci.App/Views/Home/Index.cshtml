@@ -1,0 +1,25 @@
+﻿@model IEnumerable<BaciDolci.Models.EntityModels.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Ajax.BeginForm("Search", new AjaxOptions()
+{
+    UpdateTargetId = "cont",
+    InsertionMode = InsertionMode.Replace
+}))
+{
+    <input class="form-control" type="text" name="keyword"/>
+    <input class="form-control btn btn-info" type="submit" value="Search"/>
+    <div>
+        <br />
+    </div>
+
+}
+<br />
+<div id="cont">
+    @Html.Partial("_SearchPartial", Model)
+</div>
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>

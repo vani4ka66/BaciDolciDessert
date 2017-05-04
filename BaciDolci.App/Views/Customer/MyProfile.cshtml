@@ -1,0 +1,72 @@
+﻿@model BaciDolci.Models.ViewModels.Customer.CustomerProfileViewModel
+
+@{
+    ViewBag.Title = "MyProfile";
+    int counter = 1;
+    decimal total = 0;
+}
+
+<div class="container">
+    <div class="container">
+
+        <h2>My Profile</h2>
+        <br />
+        <h5>
+            <strong>Name: </strong>@Model.FullName <br />
+            <br />
+            <strong>Email: </strong>@Model.Email <br />
+        </h5>
+        <hr />
+        <br />
+        <h2 style="text-align: center">My Cart</h2>
+        <br />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Link</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var m in Model.Products)
+                {
+                    <tr>
+                        <td>@counter</td>
+                        <td>@Html.DisplayFor(modelItem => m.Name)</td>
+                        <td>$@Html.DisplayFor(modelItem => m.Price)</td>
+                        <td>@Html.DisplayFor(modelItem => m.Category.Name)</td>
+                        <td>
+                            <a href="/Product/DetailProduct/@m.Id">
+                                @Html.DisplayFor(modelItem => m.Name)
+                            </a>
+                        </td>
+
+
+            </tr>
+
+                    total += @m.Price;
+                    counter++;
+                }
+
+            </tbody>
+        </table>
+        <br />
+        <div style="text-align: center">
+            <h3 style="color: fuchsia">Total: $@total</h3>
+        </div>
+    </div>
+
+    </div>
+<br />
+<div style="text-align: center">
+    <a href="/Category/AllCategories">
+        <input type="submit" id="btn-buy" class="btn btn-success btn-lg" value="Buy" />
+    </a>
+</div>
+

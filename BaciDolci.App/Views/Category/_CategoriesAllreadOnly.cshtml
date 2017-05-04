@@ -1,0 +1,48 @@
+﻿@model BaciDolci.Models.ViewModels.Product.CategoryViewModel
+
+@{
+    int counter = 1;
+}
+
+@if (counter % 3 == 0)
+{
+    <div class="row">
+        <div class="col-lg-4">
+
+            <figure class="product-category">
+                <a href="/Category/DetailCategory/@Html.DisplayFor(vms => vms.Id)">
+                    <img src="@Html.DisplayFor(vms=> vms.Image)" alt="cakes" width="300" height="300"/>
+                </a>
+
+                <a href="/Category/DetailCategory/@Html.DisplayFor(vms => vms.Id)">
+                    <figcaption>
+                        @Html.DisplayFor(vms => vms.Name)
+                    </figcaption>
+                </a>
+            </figure>
+
+        </div>
+        <br />
+    </div>
+
+    counter++;
+}
+else
+{
+    <div class="col-lg-4">
+
+        <figure class="product-category">
+            <a href="/Category/DetailCategory/@Html.DisplayFor(vms => vms.Id)">
+                <img src="@Html.DisplayFor(vms => vms.Image)" alt="cakes" width="300" height="300" />
+            </a>
+            <a href="/Category/DetailCategory/@Html.DisplayFor(vms => vms.Id)">
+                <figcaption>@Html.DisplayFor(vms => vms.Name)</figcaption>
+            </a>
+        </figure>
+        <br />
+    </div>
+
+    counter++;
+}
+
+
